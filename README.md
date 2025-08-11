@@ -41,7 +41,7 @@ Quy trình build cho phiên bản này khác với phiên bản gốc. Bạn ph�
 ## Tóm tắt các sửa đổi
 
 Phiên bản này đã được tự động sửa đổi để:
-*   Thay đổi đường dẫn module gốc từ `github.com/bishopfox/sliver` thành `reforged.com/sliver/core`.
+*   Thay đổi đường dẫn module gốc từ `github.com/bishopfox/sliver` thành `github.com/papcaii/slisli`.
 *   Đổi tên các message, trường, và tệp `.proto` nhạy cảm để vô hiệu hóa các quy tắc YARA.
 *   Xóa các DLL export không cần thiết và đổi tên hàm vào chính.
 *   Làm cứng logic mã nguồn để phá vỡ các mẫu phát hiện dựa trên mã lệnh.
