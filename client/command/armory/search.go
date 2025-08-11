@@ -23,9 +23,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/bishopfox/sliver/client/command/alias"
-	"github.com/bishopfox/sliver/client/command/extensions"
-	"github.com/bishopfox/sliver/client/console"
+	"github.com/papcaii/slisli/client/command/alias"
+	"github.com/papcaii/slisli/client/command/extensions"
+	"github.com/papcaii/slisli/client/console"
 )
 
 // ArmorySearchCmd - Search for packages by name

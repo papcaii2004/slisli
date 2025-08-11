@@ -21,9 +21,9 @@ package generate
 import (
 	"errors"
 
-	"github.com/bishopfox/sliver/protobuf/clientpb"
-	"github.com/bishopfox/sliver/server/db"
-	"github.com/bishopfox/sliver/server/db/models"
+	"github.com/papcaii/slisli/protobuf/clientpb"
+	"github.com/papcaii/slisli/server/db"
+	"github.com/papcaii/slisli/server/db/models"
 	"github.com/gofrs/uuid"
 )
 

@@ -23,14 +23,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/bishopfox/sliver/implant/sliver/transports/mtls"
-	"github.com/bishopfox/sliver/implant/sliver/transports/wireguard"
-	"github.com/bishopfox/sliver/protobuf/clientpb"
-	"github.com/bishopfox/sliver/protobuf/sliverpb"
-	"github.com/bishopfox/sliver/server/log"
+	"github.com/papcaii/slisli/implant/sliver/transports/mtls"
+	"github.com/papcaii/slisli/implant/sliver/transports/wireguard"
+	"github.com/papcaii/slisli/protobuf/clientpb"
+	"github.com/papcaii/slisli/protobuf/sliverpb"
+	"github.com/papcaii/slisli/server/log"
 	"github.com/gofrs/uuid"
 
-	consts "github.com/bishopfox/sliver/client/constants"
+	consts "github.com/papcaii/slisli/client/constants"
 )
 
 var (

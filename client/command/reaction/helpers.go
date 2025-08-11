@@ -26,9 +26,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/bishopfox/sliver/client/assets"
-	"github.com/bishopfox/sliver/client/console"
-	"github.com/bishopfox/sliver/client/core"
+	"github.com/papcaii/slisli/client/assets"
+	"github.com/papcaii/slisli/client/console"
+	"github.com/papcaii/slisli/client/core"
 	"github.com/rsteube/carapace"
 )
 

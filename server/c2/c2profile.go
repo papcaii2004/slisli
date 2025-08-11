@@ -22,9 +22,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/bishopfox/sliver/client/constants"
-	"github.com/bishopfox/sliver/server/configs"
-	"github.com/bishopfox/sliver/server/db"
+	"github.com/papcaii/slisli/client/constants"
+	"github.com/papcaii/slisli/server/configs"
+	"github.com/papcaii/slisli/server/db"
 )
 
 func SetupDefaultC2Profiles() {

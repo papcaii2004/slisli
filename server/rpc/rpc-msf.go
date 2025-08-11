@@ -21,13 +21,13 @@ package rpc
 import (
 	"context"
 
-	"github.com/bishopfox/sliver/protobuf/clientpb"
-	"github.com/bishopfox/sliver/protobuf/commonpb"
-	"github.com/bishopfox/sliver/protobuf/sliverpb"
-	"github.com/bishopfox/sliver/server/core"
-	"github.com/bishopfox/sliver/server/db"
-	"github.com/bishopfox/sliver/server/log"
-	"github.com/bishopfox/sliver/server/msf"
+	"github.com/papcaii/slisli/protobuf/clientpb"
+	"github.com/papcaii/slisli/protobuf/commonpb"
+	"github.com/papcaii/slisli/protobuf/sliverpb"
+	"github.com/papcaii/slisli/server/core"
+	"github.com/papcaii/slisli/server/db"
+	"github.com/papcaii/slisli/server/log"
+	"github.com/papcaii/slisli/server/msf"
 )
 
 var (

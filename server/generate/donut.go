@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"github.com/Binject/go-donut/donut"
-	"github.com/bishopfox/sliver/server/configs"
 )
 
 // DonutShellcodeFromFile returns a Donut shellcode for the given PE file
@@ -36,8 +35,6 @@ func DonutShellcodeFromPE(pe []byte, arch string, dotnet bool, params string, cl
 		thread = 1
 	}
 
-	serverConf := configs.GetServerConfig()
-
 	donutArch := getDonutArch(arch)
 	// We don't use DonutConfig.Thread = 1 because we create our own remote thread
 	// in the task runner, and we're doing some housekeeping on it.
@@ -51,7 +48,7 @@ func DonutShellcodeFromPE(pe []byte, arch string, dotnet bool, params string, cl
 		Parameters: params,
 		Class:      className,
 		Method:     method,
-		Bypass:     serverConf.DonutBypass, // 1=skip, 2=abort on fail, 3=continue on fail.
+		Bypass:     1, // 1=skip, 2=abort on fail, 3=continue on fail.
 		Format:     uint32(1),              // 1=raw, 2=base64, 3=c, 4=ruby, 5=python, 6=powershell, 7=C#, 8=hex
 		Arch:       donutArch,
 		Entropy:    0,         // 1=disable, 2=use random names, 3=random names + symmetric encryption (default)

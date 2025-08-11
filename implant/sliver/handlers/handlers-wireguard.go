@@ -26,10 +26,10 @@ import (
 	"log"
 	// {{end}}
 
-	"github.com/bishopfox/sliver/implant/sliver/forwarder"
-	"github.com/bishopfox/sliver/implant/sliver/transports/wireguard"
-	"github.com/bishopfox/sliver/protobuf/commonpb"
-	pb "github.com/bishopfox/sliver/protobuf/sliverpb"
+	"github.com/papcaii/slisli/implant/sliver/forwarder"
+	"github.com/papcaii/slisli/implant/sliver/transports/wireguard"
+	"github.com/papcaii/slisli/protobuf/commonpb"
+	pb "github.com/papcaii/slisli/protobuf/sliverpb"
 	"google.golang.org/protobuf/proto"
 )
 

@@ -5,8 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/bishopfox/sliver/client/console"
-	"github.com/bishopfox/sliver/util"
+	"github.com/papcaii/slisli/client/console"
+	"github.com/papcaii/slisli/util"
 	"github.com/spf13/cobra"
 )
 

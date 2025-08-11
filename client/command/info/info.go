@@ -22,11 +22,11 @@ import (
 	"context"
 	"time"
 
-	"github.com/bishopfox/sliver/client/command/use"
-	"github.com/bishopfox/sliver/client/console"
-	consts "github.com/bishopfox/sliver/client/constants"
-	"github.com/bishopfox/sliver/protobuf/clientpb"
-	"github.com/bishopfox/sliver/protobuf/sliverpb"
+	"github.com/papcaii/slisli/client/command/use"
+	"github.com/papcaii/slisli/client/console"
+	consts "github.com/papcaii/slisli/client/constants"
+	"github.com/papcaii/slisli/protobuf/clientpb"
+	"github.com/papcaii/slisli/protobuf/sliverpb"
 	"github.com/spf13/cobra"
 	"google.golang.org/protobuf/proto"
 )
@@ -107,7 +107,7 @@ func InfoCmd(cmd *cobra.Command, con *console.SliverClient, args []string) {
 		con.Printf(console.Bold+"    Remote Address: %s%s\n", console.Normal, beacon.RemoteAddress)
 		con.Printf(console.Bold+"         Proxy URL: %s%s\n", console.Normal, beacon.ProxyURL)
 		con.Printf(console.Bold+"          Interval: %s%s\n", console.Normal, time.Duration(beacon.Interval).String())
-		con.Printf(console.Bold+"            Jitter: %s%s\n", console.Normal, time.Duration(beacon.Jitter).String())
+		con.Printf(console.Bold+"            Jitter: %s%s\n", console.Normal, time.Duration(beacon.TimeSkew).String())
 		con.Printf(console.Bold+"     First Contact: %s%s\n", console.Normal, con.FormatDateDelta(time.Unix(beacon.FirstContact, 0), true, false))
 		con.Printf(console.Bold+"      Last Checkin: %s%s\n", console.Normal, con.FormatDateDelta(time.Unix(beacon.LastCheckin, 0), true, false))
 		con.Printf(console.Bold+"      Next Checkin: %s%s\n", console.Normal, con.FormatDateDelta(time.Unix(beacon.NextCheckin, 0), true, true))

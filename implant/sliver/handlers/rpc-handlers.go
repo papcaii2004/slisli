@@ -27,12 +27,12 @@ import (
 	"log"
 	// {{end}}
 
-	"github.com/bishopfox/sliver/implant/sliver/netstat"
-	"github.com/bishopfox/sliver/implant/sliver/ps"
-	"github.com/bishopfox/sliver/implant/sliver/shell/ssh"
-	"github.com/bishopfox/sliver/implant/sliver/taskrunner"
-	"github.com/bishopfox/sliver/protobuf/commonpb"
-	"github.com/bishopfox/sliver/protobuf/sliverpb"
+	"github.com/papcaii/slisli/implant/sliver/netstat"
+	"github.com/papcaii/slisli/implant/sliver/ps"
+	"github.com/papcaii/slisli/implant/sliver/shell/ssh"
+	"github.com/papcaii/slisli/implant/sliver/taskrunner"
+	"github.com/papcaii/slisli/protobuf/commonpb"
+	"github.com/papcaii/slisli/protobuf/sliverpb"
 
 	"google.golang.org/protobuf/proto"
 )

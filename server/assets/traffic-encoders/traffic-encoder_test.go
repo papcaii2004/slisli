@@ -26,8 +26,8 @@ import (
 	"testing"
 	"time"
 
-	implantEncoders "github.com/bishopfox/sliver/implant/sliver/encoders/traffic"
-	serverEncoders "github.com/bishopfox/sliver/util/encoders/traffic"
+	implantEncoders "github.com/papcaii/slisli/implant/sliver/encoders/traffic"
+	serverEncoders "github.com/papcaii/slisli/util/encoders/traffic"
 )
 
 //go:embed hex.wasm

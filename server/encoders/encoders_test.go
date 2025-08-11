@@ -25,8 +25,8 @@ import (
 	"testing"
 	"time"
 
-	implantEncoders "github.com/bishopfox/sliver/implant/sliver/encoders"
-	util "github.com/bishopfox/sliver/util/encoders"
+	implantEncoders "github.com/papcaii/slisli/implant/sliver/encoders"
+	util "github.com/papcaii/slisli/util/encoders"
 )
 
 const (

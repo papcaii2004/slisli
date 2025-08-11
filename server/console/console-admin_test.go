@@ -5,8 +5,8 @@ import (
 	"encoding/pem"
 	"testing"
 
-	clienttransport "github.com/bishopfox/sliver/client/transport"
-	"github.com/bishopfox/sliver/server/certs"
+	clienttransport "github.com/papcaii/slisli/client/transport"
+	"github.com/papcaii/slisli/server/certs"
 )
 
 func TestRootOnlyVerifyCertificate(t *testing.T) {

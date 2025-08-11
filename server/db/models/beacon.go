@@ -23,8 +23,8 @@ import (
 	"encoding/binary"
 	"time"
 
-	"github.com/bishopfox/sliver/protobuf/clientpb"
-	"github.com/bishopfox/sliver/protobuf/sliverpb"
+	"github.com/papcaii/slisli/protobuf/clientpb"
+	"github.com/papcaii/slisli/protobuf/sliverpb"
 	"github.com/gofrs/uuid"
 	"google.golang.org/protobuf/proto"
 	"gorm.io/gorm"
@@ -58,7 +58,7 @@ type Beacon struct {
 	ImplantBuildID uuid.UUID `gorm:"type:uuid;"`
 
 	Interval    int64
-	Jitter      int64
+	TimeSkew      int64
 	NextCheckin int64
 
 	Tasks []BeaconTask
@@ -92,7 +92,7 @@ func (b *Beacon) ToProtobuf() *clientpb.Beacon {
 		ProxyURL:          b.ProxyURL,
 		ReconnectInterval: b.ReconnectInterval,
 		Interval:          b.Interval,
-		Jitter:            b.Jitter,
+		TimeSkew:            b.TimeSkew,
 		NextCheckin:       b.NextCheckin,
 		Locale:            b.Locale,
 		FirstContact:      b.CreatedAt.Unix(),

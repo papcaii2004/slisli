@@ -11,8 +11,8 @@ import (
 	// {{end}}
 	"strings"
 
-	"github.com/bishopfox/sliver/implant/sliver/priv"
-	"github.com/bishopfox/sliver/implant/sliver/syscalls"
+	"github.com/papcaii/slisli/implant/sliver/priv"
+	"github.com/papcaii/slisli/implant/sliver/syscalls"
 	"golang.org/x/sys/windows"
 	"golang.org/x/sys/windows/registry"
 )

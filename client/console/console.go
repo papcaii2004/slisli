@@ -32,14 +32,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/bishopfox/sliver/client/assets"
-	consts "github.com/bishopfox/sliver/client/constants"
-	"github.com/bishopfox/sliver/client/core"
-	"github.com/bishopfox/sliver/client/spin"
-	"github.com/bishopfox/sliver/client/version"
-	"github.com/bishopfox/sliver/protobuf/clientpb"
-	"github.com/bishopfox/sliver/protobuf/commonpb"
-	"github.com/bishopfox/sliver/protobuf/rpcpb"
+	"github.com/papcaii/slisli/client/assets"
+	consts "github.com/papcaii/slisli/client/constants"
+	"github.com/papcaii/slisli/client/core"
+	"github.com/papcaii/slisli/client/spin"
+	"github.com/papcaii/slisli/client/version"
+	"github.com/papcaii/slisli/protobuf/clientpb"
+	"github.com/papcaii/slisli/protobuf/commonpb"
+	"github.com/papcaii/slisli/protobuf/rpcpb"
 	"github.com/gofrs/uuid"
 	"github.com/reeflective/console"
 	"github.com/reeflective/readline"
@@ -573,7 +573,7 @@ func (con *SliverClient) GetActiveBeaconConfig() *clientpb.ImplantConfig {
 		Debug:               false,
 		IsBeacon:            true,
 		BeaconInterval:      beacon.Interval,
-		BeaconJitter:        beacon.Jitter,
+		BeaconJitter:        beacon.TimeSkew,
 		Evasion:             beacon.Evasion,
 		MaxConnectionErrors: uint32(1000),
 		ReconnectInterval:   int64(60),

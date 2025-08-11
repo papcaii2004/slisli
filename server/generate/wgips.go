@@ -3,8 +3,8 @@ package generate
 import (
 	"net"
 
-	"github.com/bishopfox/sliver/server/db"
-	"github.com/bishopfox/sliver/server/log"
+	"github.com/papcaii/slisli/server/db"
+	"github.com/papcaii/slisli/server/log"
 	"github.com/sirupsen/logrus"
 )
 

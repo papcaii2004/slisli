@@ -21,10 +21,10 @@ package core
 import (
 	"errors"
 
-	consts "github.com/bishopfox/sliver/client/constants"
-	"github.com/bishopfox/sliver/server/db"
-	"github.com/bishopfox/sliver/server/db/models"
-	"github.com/bishopfox/sliver/server/log"
+	consts "github.com/papcaii/slisli/client/constants"
+	"github.com/papcaii/slisli/server/db"
+	"github.com/papcaii/slisli/server/db/models"
+	"github.com/papcaii/slisli/server/log"
 	"github.com/gofrs/uuid"
 	"gorm.io/gorm"
 )

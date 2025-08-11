@@ -24,9 +24,9 @@ import (
 	"os"
 
 	"github.com/AlecAivazis/survey/v2"
-	"github.com/bishopfox/sliver/client/console"
-	"github.com/bishopfox/sliver/client/constants"
-	"github.com/bishopfox/sliver/protobuf/commonpb"
+	"github.com/papcaii/slisli/client/console"
+	"github.com/papcaii/slisli/client/constants"
+	"github.com/papcaii/slisli/protobuf/commonpb"
 	"github.com/spf13/cobra"
 )
 

@@ -21,12 +21,12 @@ package rpc
 import (
 	"context"
 
-	"github.com/bishopfox/sliver/protobuf/clientpb"
-	"github.com/bishopfox/sliver/protobuf/commonpb"
-	"github.com/bishopfox/sliver/protobuf/sliverpb"
-	"github.com/bishopfox/sliver/server/core"
-	"github.com/bishopfox/sliver/server/db"
-	"github.com/bishopfox/sliver/util"
+	"github.com/papcaii/slisli/protobuf/clientpb"
+	"github.com/papcaii/slisli/protobuf/commonpb"
+	"github.com/papcaii/slisli/protobuf/sliverpb"
+	"github.com/papcaii/slisli/server/core"
+	"github.com/papcaii/slisli/server/db"
+	"github.com/papcaii/slisli/util"
 )
 
 const maxNameLength = 32
@@ -62,7 +62,7 @@ func (rpc *Server) Reconfigure(ctx context.Context, req *sliverpb.ReconfigureReq
 			beacon.Interval = req.BeaconInterval
 		}
 		if req.BeaconJitter != 0 {
-			beacon.Jitter = req.BeaconJitter
+			beacon.TimeSkew = req.BeaconJitter
 		}
 		err = db.Session().Save(beacon).Error
 		if err != nil {

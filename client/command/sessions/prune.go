@@ -21,9 +21,9 @@ package sessions
 import (
 	"context"
 
-	"github.com/bishopfox/sliver/client/command/kill"
-	"github.com/bishopfox/sliver/client/console"
-	"github.com/bishopfox/sliver/protobuf/commonpb"
+	"github.com/papcaii/slisli/client/command/kill"
+	"github.com/papcaii/slisli/client/console"
+	"github.com/papcaii/slisli/protobuf/commonpb"
 	"github.com/spf13/cobra"
 )
 

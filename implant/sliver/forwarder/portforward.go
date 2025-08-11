@@ -29,7 +29,7 @@ import (
 	"net"
 	"sync"
 
-	"github.com/bishopfox/sliver/implant/sliver/netstack"
+	"github.com/papcaii/slisli/implant/sliver/netstack"
 )
 
 var tcpForwarderID = 0

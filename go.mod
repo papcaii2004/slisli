@@ -1,8 +1,8 @@
-module github.com/bishopfox/sliver
+module github.com/papcaii/slisli
 
-go 1.22.0
+go 1.23.0
 
-toolchain go1.22.2
+toolchain go1.24.5
 
 replace github.com/rsteube/carapace v0.36.3 => github.com/reeflective/carapace v0.46.3-0.20231214181515-27e49f3c3b69
 
@@ -50,7 +50,7 @@ require (
 	golang.org/x/crypto v0.32.0
 	golang.org/x/exp v0.0.0-20240416160154-fe59bbe5cc7f
 	golang.org/x/net v0.33.0
-	golang.org/x/sys v0.29.0
+	golang.org/x/sys v0.34.0
 	golang.org/x/term v0.28.0
 	golang.org/x/text v0.21.0
 	golang.zx2c4.com/wireguard v0.0.0-20231211153847-12269c276173

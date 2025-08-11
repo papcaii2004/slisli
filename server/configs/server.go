@@ -23,9 +23,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/bishopfox/sliver/server/assets"
-	"github.com/bishopfox/sliver/server/db/models"
-	"github.com/bishopfox/sliver/server/log"
+	"github.com/papcaii/slisli/server/assets"
+	"github.com/papcaii/slisli/server/db/models"
+	"github.com/papcaii/slisli/server/log"
 	"github.com/sirupsen/logrus"
 )
 

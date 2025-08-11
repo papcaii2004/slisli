@@ -21,7 +21,7 @@ package db
 */
 
 import (
-	"github.com/bishopfox/sliver/server/configs"
+	"github.com/papcaii/slisli/server/configs"
 	_ "github.com/mattn/go-sqlite3"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"

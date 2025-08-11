@@ -23,11 +23,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bishopfox/sliver/protobuf/commonpb"
-	"github.com/bishopfox/sliver/protobuf/sliverpb"
-	"github.com/bishopfox/sliver/server/core"
-	"github.com/bishopfox/sliver/server/db"
-	"github.com/bishopfox/sliver/server/db/models"
+	"github.com/papcaii/slisli/protobuf/commonpb"
+	"github.com/papcaii/slisli/protobuf/sliverpb"
+	"github.com/papcaii/slisli/server/core"
+	"github.com/papcaii/slisli/server/db"
+	"github.com/papcaii/slisli/server/db/models"
 	"google.golang.org/protobuf/proto"
 )
 

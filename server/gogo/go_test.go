@@ -22,7 +22,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/bishopfox/sliver/server/assets"
+	"github.com/papcaii/slisli/server/assets"
 )
 
 func TestGoGoVersion(t *testing.T) {

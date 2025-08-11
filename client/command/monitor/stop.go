@@ -23,8 +23,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/bishopfox/sliver/client/console"
-	"github.com/bishopfox/sliver/protobuf/commonpb"
+	"github.com/papcaii/slisli/client/console"
+	"github.com/papcaii/slisli/protobuf/commonpb"
 )
 
 // MonitorStopCmd - Stop monitoring threat intel for implants

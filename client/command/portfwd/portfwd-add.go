@@ -25,9 +25,9 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/bishopfox/sliver/client/console"
-	"github.com/bishopfox/sliver/client/core"
-	"github.com/bishopfox/sliver/client/tcpproxy"
+	"github.com/papcaii/slisli/client/console"
+	"github.com/papcaii/slisli/client/core"
+	"github.com/papcaii/slisli/client/tcpproxy"
 	"github.com/spf13/cobra"
 )
 

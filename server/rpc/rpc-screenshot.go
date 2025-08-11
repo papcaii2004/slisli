@@ -21,12 +21,12 @@ package rpc
 import (
 	"context"
 
-	"github.com/bishopfox/sliver/protobuf/commonpb"
-	"github.com/bishopfox/sliver/protobuf/sliverpb"
+	"github.com/papcaii/slisli/protobuf/commonpb"
+	"github.com/papcaii/slisli/protobuf/sliverpb"
 )
 
 // Screenshot - Take a screenshot of the remote system
-func (rpc *Server) Screenshot(ctx context.Context, req *sliverpb.ScreenshotReq) (*sliverpb.Screenshot, error) {
+func (rpc *Server) Screenshot(ctx context.Context, req *sliverpb.ScShotReq) (*sliverpb.Screenshot, error) {
 	resp := &sliverpb.Screenshot{Response: &commonpb.Response{}}
 	err := rpc.GenericHandler(req, resp)
 	if err != nil {

@@ -27,7 +27,7 @@ import (
 	"log"
 	// {{end}}
 
-	pb "github.com/bishopfox/sliver/protobuf/sliverpb"
+	pb "github.com/papcaii/slisli/protobuf/sliverpb"
 	"github.com/lesnuages/go-winio"
 )
 

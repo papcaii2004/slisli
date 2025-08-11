@@ -1,11 +1,11 @@
 package rportfwd
 
 import (
-	"github.com/bishopfox/sliver/client/command/completers"
-	"github.com/bishopfox/sliver/client/command/flags"
-	"github.com/bishopfox/sliver/client/command/help"
-	"github.com/bishopfox/sliver/client/console"
-	consts "github.com/bishopfox/sliver/client/constants"
+	"github.com/papcaii/slisli/client/command/completers"
+	"github.com/papcaii/slisli/client/command/flags"
+	"github.com/papcaii/slisli/client/command/help"
+	"github.com/papcaii/slisli/client/console"
+	consts "github.com/papcaii/slisli/client/constants"
 	"github.com/rsteube/carapace"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"

@@ -23,8 +23,8 @@ package handlers
 import (
 	"os"
 
-	"github.com/bishopfox/sliver/implant/sliver/transports"
-	"github.com/bishopfox/sliver/protobuf/sliverpb"
+	"github.com/papcaii/slisli/implant/sliver/transports"
+	"github.com/papcaii/slisli/protobuf/sliverpb"
 
 	// {{if or .Config.IsSharedLib .Config.IsShellcode}}
 

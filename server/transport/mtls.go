@@ -25,10 +25,10 @@ import (
 	"net"
 	"runtime/debug"
 
-	"github.com/bishopfox/sliver/protobuf/rpcpb"
-	"github.com/bishopfox/sliver/server/certs"
-	"github.com/bishopfox/sliver/server/log"
-	"github.com/bishopfox/sliver/server/rpc"
+	"github.com/papcaii/slisli/protobuf/rpcpb"
+	"github.com/papcaii/slisli/server/certs"
+	"github.com/papcaii/slisli/server/log"
+	"github.com/papcaii/slisli/server/rpc"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"

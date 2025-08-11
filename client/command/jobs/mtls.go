@@ -21,8 +21,8 @@ package jobs
 import (
 	"context"
 
-	"github.com/bishopfox/sliver/client/console"
-	"github.com/bishopfox/sliver/protobuf/clientpb"
+	"github.com/papcaii/slisli/client/console"
+	"github.com/papcaii/slisli/protobuf/clientpb"
 	"github.com/spf13/cobra"
 )
 

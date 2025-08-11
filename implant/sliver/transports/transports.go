@@ -156,7 +156,7 @@ func SetReconnectInterval(interval int64) {
 }
 
 // GetJitter - Get the beacon jitter {{if .Config.IsBeacon}}
-func GetJitter() int64 {
+func GetTimeSkew() int64 {
 	if jitter == time.Duration(0) {
 		configJitter, err := strconv.ParseInt(`{{.Config.BeaconJitter}}`, 10, 64)
 		jitter = time.Duration(configJitter)

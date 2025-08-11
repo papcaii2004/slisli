@@ -28,8 +28,8 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/bishopfox/sliver/client/console"
-	"github.com/bishopfox/sliver/protobuf/commonpb"
+	"github.com/papcaii/slisli/client/console"
+	"github.com/papcaii/slisli/protobuf/commonpb"
 	"github.com/spf13/cobra"
 )
 

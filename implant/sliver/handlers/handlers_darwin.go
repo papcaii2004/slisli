@@ -24,9 +24,9 @@ import (
 	"strconv"
 	"syscall"
 
-	"github.com/bishopfox/sliver/implant/sliver/extension"
-	"github.com/bishopfox/sliver/protobuf/commonpb"
-	pb "github.com/bishopfox/sliver/protobuf/sliverpb"
+	"github.com/papcaii/slisli/implant/sliver/extension"
+	"github.com/papcaii/slisli/protobuf/commonpb"
+	pb "github.com/papcaii/slisli/protobuf/sliverpb"
 	"google.golang.org/protobuf/proto"
 )
 

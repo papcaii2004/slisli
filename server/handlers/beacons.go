@@ -27,13 +27,13 @@ import (
 	"errors"
 	"time"
 
-	consts "github.com/bishopfox/sliver/client/constants"
-	"github.com/bishopfox/sliver/protobuf/clientpb"
-	sliverpb "github.com/bishopfox/sliver/protobuf/sliverpb"
-	"github.com/bishopfox/sliver/server/core"
-	"github.com/bishopfox/sliver/server/db"
-	"github.com/bishopfox/sliver/server/db/models"
-	"github.com/bishopfox/sliver/server/log"
+	consts "github.com/papcaii/slisli/client/constants"
+	"github.com/papcaii/slisli/protobuf/clientpb"
+	sliverpb "github.com/papcaii/slisli/protobuf/sliverpb"
+	"github.com/papcaii/slisli/server/core"
+	"github.com/papcaii/slisli/server/db"
+	"github.com/papcaii/slisli/server/db/models"
+	"github.com/papcaii/slisli/server/log"
 	"github.com/gofrs/uuid"
 	"google.golang.org/protobuf/proto"
 	"gorm.io/gorm"
@@ -85,7 +85,7 @@ func beaconRegisterHandler(implantConn *core.ImplantConnection, data []byte) *sl
 	beacon.Locale = beaconReg.Register.Locale
 
 	beacon.Interval = beaconReg.Interval
-	beacon.Jitter = beaconReg.Jitter
+	beacon.TimeSkew = beaconReg.TimeSkew
 	beacon.NextCheckin = time.Now().Unix() + beaconReg.NextCheckin
 
 	err = db.Session().Save(beacon).Error

