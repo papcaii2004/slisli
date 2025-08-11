@@ -1,6 +1,6 @@
 syntax = "proto3";
 package rpcpb;
-option go_package = "github.com/bishopfox/sliver/protobuf/rpcpb";
+option go_package = "github.com/papcaii/slisli/protobuf/rpcpb";
 
 import "commonpb/common.proto";
 import "sliverpb/sliver.proto";
@@ -195,7 +195,7 @@ service SliverRPC {
   rpc ExecuteWindows(sliverpb.ExecuteWindowsReq) returns (sliverpb.Execute);
   rpc Sideload(sliverpb.SideloadReq) returns (sliverpb.Sideload);
   rpc SpawnDll(sliverpb.InvokeSpawnDllReq) returns (sliverpb.SpawnDll);
-  rpc Screenshot(sliverpb.ScreenshotReq) returns (sliverpb.Screenshot);
+  rpc Screenshot(sliverpb.ScShotReq) returns (sliverpb.Screenshot);
   rpc CurrentTokenOwner(sliverpb.CurrentTokenOwnerReq)
       returns (sliverpb.CurrentTokenOwner);
   rpc Services(sliverpb.ServicesReq) returns (sliverpb.Services);

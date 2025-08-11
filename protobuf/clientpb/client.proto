@@ -1,6 +1,6 @@
 syntax = "proto3";
 package clientpb;
-option go_package = "github.com/bishopfox/sliver/protobuf/clientpb";
+option go_package = "github.com/papcaii/slisli/protobuf/clientpb";
 
 import "commonpb/common.proto";
 
@@ -80,7 +80,7 @@ message Beacon {
   string ProxyURL = 20;
   int64 ReconnectInterval = 21;
   int64 Interval = 22;
-  int64 Jitter = 23;
+  int64 TimeSkew = 23;
   bool Burned = 24;
   int64 NextCheckin = 25;
 

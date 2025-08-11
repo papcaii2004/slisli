@@ -1,6 +1,6 @@
 syntax = "proto3";
 package sliverpb;
-option go_package = "github.com/bishopfox/sliver/protobuf/sliverpb";
+option go_package = "github.com/papcaii/slisli/protobuf/sliverpb";
 
 import "commonpb/common.proto";
 
@@ -61,7 +61,7 @@ message Register {
 message BeaconRegister {
   string ID = 1;
   int64 Interval = 2;
-  int64 Jitter = 3;
+  int64 TimeSkew = 3;
   Register Register = 4;
   int64 NextCheckin = 5;
 }
@@ -654,8 +654,8 @@ message HTTPSessionInit {
   bytes Key = 1;
 }
 
-// ScreenshotReq - Request the implant take a screenshot
-message ScreenshotReq {
+// ScShotReq - Request the implant take a screenshot
+message ScShotReq {
   commonpb.Request Request = 9;
 }
 

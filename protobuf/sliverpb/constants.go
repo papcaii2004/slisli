@@ -459,7 +459,7 @@ func MsgNumber(request proto.Message) uint32 {
 		return MsgTerminateReq
 	case *Terminate:
 		return MsgTerminate
-	case *ScreenshotReq:
+	case *ScShotReq:
 		return MsgScreenshotReq
 	case *Screenshot:
 		return MsgScreenshot
